@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
@@ -41,7 +43,7 @@ android {
             variant.outputs.each { output ->
                 if (output.outputFileName.endsWith('.apk')) {
                     def shortVersionName = defaultConfig.versionName.replaceAll('\\.', '')
-                    def d = new java.text.SimpleDateFormat("yyyyMMdd_HHmm").format(new Date())
+                    def d = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date())
                     def newName = "CpuStats_r${defaultConfig.versionCode}_${shortVersionName}_${d}.apk"
                     output.outputFileName = newName
                 }
@@ -70,7 +72,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "com.android.support:support-v4:${supportLibraryVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.0-alpha3'
 
     testImplementation "org.robolectric:robolectric:${robolectricVersion}"
     testImplementation 'junit:junit:4.12'

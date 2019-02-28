@@ -32,8 +32,8 @@ class AboutActivity : Activity() {
                 val cmd = ProcessBuilder(*args)
 
                 val process = cmd.start()
-                val `in` = process.inputStream
-                val isr = InputStreamReader(`in`)
+                val processOutput = process.inputStream
+                val isr = InputStreamReader(processOutput)
                 val br = BufferedReader(isr)
 
                 br.forEachLine {
@@ -83,7 +83,7 @@ class AboutActivity : Activity() {
             var versionCode = "?"
             var version = "x.x.x"
             if (pinfo != null) {
-                versionCode = pinfo.versionCode.toString()
+                versionCode = pinfo.longVersionCode.toString()
                 version = pinfo.versionName
             }
 
